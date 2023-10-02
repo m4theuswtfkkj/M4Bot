@@ -12,3 +12,6 @@
 ship:
  sucess: "a chance de {name1} ficar com {name2} é {ship}" # Mensagem ao ship dar certo | Variáveis: {name1} - primeiro nome do ship, {name2} - segundo nome do ship, {ship} - resultado do ship entre os nomes 1 e 2
  usage: "por favor, utilize {prefix}ship (nome 1) (nome 2)" # Como se deve usar o comando de ship | Variáveis: {prefix} - mostra o prefixo
+ 
+# Broxa/brocha
+broxa: "{player} está {value}% broxa" # Mensagem da procentagem de "broxa" que a pessoa está | Variáveis: {player} - nome do jogador atual, {value} - valor aleatório de quanto o jogador está "broxa"
