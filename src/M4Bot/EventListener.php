@@ -65,6 +65,11 @@ class EventListener implements Listener
                         $this->send($p, str_replace("{prefix}", $prefix, $botName . " " . $this->getMessages()->getNested("ship.usage", "por favor, utilize {prefix}ship (nome 1) (nome 2)")));
                         $e->setCancelled(true);
                     break;
+                    case "broxa":
+                    case "brocha": // Fato aleatório: alguns dicionários dizem brocha e outros broxa
+                        $this->send($p, str_replace(["{player}", "{value}"], [$p->getName(), rand(1, 100)], $botName . " " . $this->getMessages()->get("broxa", "{player} está {value}% broxa")));
+                        $e->setCancelled(true);
+                    break;
                 }
             }
         }
