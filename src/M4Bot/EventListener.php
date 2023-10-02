@@ -70,6 +70,10 @@ class EventListener implements Listener
                         $this->send($p, str_replace(["{player}", "{value}"], [$p->getName(), rand(1, 100)], $botName . " " . $this->getMessages()->get("broxa", "{player} está {value}% broxa")));
                         $e->setCancelled(true);
                     break;
+                    case "lola":
+                        $this->send($p, str_replace(["{player}", "{value}"], [$p->getName(), rand(1, 34)], $botName . " " . $this->getMessages()->get("lola", "a lola de {player} tem {value} cm")));
+                        $e->setCancelled(true);
+                    break;
                 }
             }
         }

@@ -15,3 +15,6 @@ ship:
  
 # Broxa/brocha
 broxa: "{player} está {value}% broxa" # Mensagem da procentagem de "broxa" que a pessoa está | Variáveis: {player} - nome do jogador atual, {value} - valor aleatório de quanto o jogador está "broxa"
+
+# Lola
+lola: "a lola de {player} tem {value} cm" # Mensagem do tamanho da "lola" da pessoa | Variáveis: {player} - nome do jogador atual, {value} - valor aleatório do tamanho da lola da pessoa
