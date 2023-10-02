@@ -18,3 +18,13 @@ broxa: "{player} está {value}% broxa" # Mensagem da procentagem de "broxa" que 
 
 # Lola
 lola: "a lola de {player} tem {value} cm" # Mensagem do tamanho da "lola" da pessoa | Variáveis: {player} - nome do jogador atual, {value} - valor aleatório do tamanho da lola da pessoa
+
+# Calvo
+calvo: "{player} é {value}% calvo" # Mensagem da procentagem de "calco" que a pessoa é | Variáveis: {player} - nome do jogador atual, {value} - valor aleatório de quanto o jogador é calvo
+
+
+# Comando de ajuda
+help: "Comandos:\n{prefix}ship (nome1) (nome2)\n{prefix}broxa\n{prefix}lola\n{prefix}calvo"
+
+# Comando desconhecido/inválido
+invalidcmd: "comando desconhecido, use {prefix}help"

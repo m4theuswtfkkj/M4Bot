@@ -74,6 +74,18 @@ class EventListener implements Listener
                         $this->send($p, str_replace(["{player}", "{value}"], [$p->getName(), rand(1, 34)], $botName . " " . $this->getMessages()->get("lola", "a lola de {player} tem {value} cm")));
                         $e->setCancelled(true);
                     break;
+                    case "calvo":
+                        $this->send($p, str_replace(["{player}", "{value}"], [$p->getName(), rand(1, 100)], $botName . " " . $this->getMessages()->get("calvo", "{player} é {value}% calvo")));
+                        $e->setCancelled(true);
+                    break;
+                    case "help":
+                        $this->send($p, str_replace("{prefix}", $prefix, $botName . " " . $this->getMessages()->getNested("help", "Comandos:\n{prefix}ship (nome1) (nome2)\n{prefix}broxa\n{prefix}lola\n{prefix}calvo")));
+                        $e->setCancelled(true);
+                    break;
+                    default:
+                        $this->send($p, str_replace("{prefix}", $prefix, $botName . " " . $this->getMessages()->getNested("invalidcmd", "comando desconhecido, use {prefix}help")));
+                        $e->setCancelled(true);
+                    break;
                 }
             }
         }
