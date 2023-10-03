@@ -22,6 +22,9 @@ lola: "a lola de {player} tem {value} cm" # Mensagem do tamanho da "lola" da pes
 # Calvo
 calvo: "{player} é {value}% calvo" # Mensagem da procentagem de "calco" que a pessoa é | Variáveis: {player} - nome do jogador atual, {value} - valor aleatório de quanto o jogador é calvo
 
+# Ccme
+clear: "{clear}{botname} chat limpo com sucesso" # Mensagem quando o chat da pessoa é limpo | Variáveis: {botname} - nome do bot, {clear} - limpeza
+
 
 # Comando de ajuda
 help: "Comandos:\n{prefix}ship (nome1) (nome2)\n{prefix}broxa\n{prefix}lola\n{prefix}calvo"

@@ -82,6 +82,10 @@ class EventListener implements Listener
                         $this->send($p, str_replace("{prefix}", $prefix, $botName . " " . $this->getMessages()->getNested("help", "Comandos:\n{prefix}ship (nome1) (nome2)\n{prefix}broxa\n{prefix}lola\n{prefix}calvo")));
                         $e->setCancelled(true);
                     break;
+                    case "ccme":
+                        $this->send($p, str_replace(["{botname}", "{clear}"], [$botName, str_repeat("§f\n", 40)], $this->getMessages()->getNested("ccme", "{clear}{botname} chat limpo com sucesso")));
+                        $e->setCancelled(true);
+                    break;
                     default:
                         $this->send($p, str_replace("{prefix}", $prefix, $botName . " " . $this->getMessages()->getNested("invalidcmd", "comando desconhecido, use {prefix}help")));
                         $e->setCancelled(true);
