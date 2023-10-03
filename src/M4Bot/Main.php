@@ -14,7 +14,7 @@ class Main extends PluginBase
     {
         $this->getServer()->getLogger()->info(">==> M4Bot <==<\n> By M4theuskkj\n> Carregando config.yml, messages.yml & iniciando listener");
         $path = $this->getDataFolder();
-        if (!file_exists($path)) {
+        if (!is_dir($path)) {
             @mkdir($path);
         }
         
