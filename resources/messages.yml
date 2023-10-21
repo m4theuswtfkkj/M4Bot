@@ -31,3 +31,5 @@ help: "Comandos:\n{prefix}ship (nome1) (nome2)\n{prefix}broxa\n{prefix}lola\n{pr
 
 # Comando desconhecido/inválido
 invalidcmd: "comando desconhecido, use {prefix}help"
+# Comando desativado (config.yml para desativar ou ativar comandos)
+disabledcmd: "esse comando foi desativado..."

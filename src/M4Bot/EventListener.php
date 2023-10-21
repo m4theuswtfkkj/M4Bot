@@ -15,6 +15,12 @@ class EventListener implements Listener
     public function __construct(Main $main)
     {
         $this->main = $main;
+        $this->enabledCommands = $this->getConfig()->get("enabled_commands", []);
+        foreach ($this->enabledCommands as $cmd) {
+            if (!$this->isValidCommand($cmd)) {
+                $this->getServer()->getLogger()->notice("Comando inválido na configuração enabled_commands (config.yml): ". $cmd);
+            }
+        }
     }
     
     public function getServer()
@@ -46,50 +52,55 @@ class EventListener implements Listener
                 $parts = explode(" ", $command);
                 $cmd = strtolower(array_shift($parts));
                 
-                switch ($cmd)
-                {
-                    case "version":
-                        $this->send($p, $botName . " §fEste servidor está usando a versão 1 do plugin \"M4Bot\" :)");
-                        $e->setCancelled(true);
-                    break;
-                    case "ship":
-                        if (count($parts) == 2) {
-                            $name1 = $parts[0];
-                            $name2 = $parts[1];
-                            
-                            $this->send($p, str_replace(["{name1}", "{name2}", "{ship}"], [$name1, $name2, $this->ship($name1, $name2)], $botName . " " . $this->getMessages()->getNested("ship.sucess", "a chance de {name1} ficar com {name2} é {ship}")));
+                if (in_array($cmd, $this->enabledCommands)) {
+                    switch ($cmd)
+                    {
+                        case "version":
+                            $this->send($p, $botName . " §fEste servidor está usando a versão 1 do plugin \"M4Bot\" :)");
                             $e->setCancelled(true);
-                            return;
-                        }
+                        break;
+                        case "ship":
+                            if (count($parts) == 2) {
+                                $name1 = $parts[0];
+                                $name2 = $parts[1];
+                            
+                                $this->send($p, str_replace(["{name1}", "{name2}", "{ship}"], [$name1, $name2, $this->ship($name1, $name2)], $botName . " " . $this->getMessages()->getNested("ship.sucess", "a chance de {name1} ficar com {name2} é {ship}")));
+                                $e->setCancelled(true);
+                                return;
+                            }
                         
-                        $this->send($p, str_replace("{prefix}", $prefix, $botName . " " . $this->getMessages()->getNested("ship.usage", "por favor, utilize {prefix}ship (nome 1) (nome 2)")));
-                        $e->setCancelled(true);
-                    break;
-                    case "broxa":
-                    case "brocha": // Fato aleatório: alguns dicionários dizem brocha e outros broxa
-                        $this->send($p, str_replace(["{player}", "{value}"], [$p->getName(), rand(1, 100)], $botName . " " . $this->getMessages()->get("broxa", "{player} está {value}% broxa")));
-                        $e->setCancelled(true);
-                    break;
-                    case "lola":
-                        $this->send($p, str_replace(["{player}", "{value}"], [$p->getName(), rand(1, 34)], $botName . " " . $this->getMessages()->get("lola", "a lola de {player} tem {value} cm")));
-                        $e->setCancelled(true);
-                    break;
-                    case "calvo":
-                        $this->send($p, str_replace(["{player}", "{value}"], [$p->getName(), rand(1, 100)], $botName . " " . $this->getMessages()->get("calvo", "{player} é {value}% calvo")));
-                        $e->setCancelled(true);
-                    break;
-                    case "help":
-                        $this->send($p, str_replace("{prefix}", $prefix, $botName . " " . $this->getMessages()->getNested("help", "Comandos:\n{prefix}ship (nome1) (nome2)\n{prefix}broxa\n{prefix}lola\n{prefix}calvo")));
-                        $e->setCancelled(true);
-                    break;
-                    case "ccme":
-                        $this->send($p, str_replace(["{botname}", "{clear}"], [$botName, str_repeat("§f\n", 40)], $this->getMessages()->getNested("ccme", "{clear}{botname} chat limpo com sucesso")));
-                        $e->setCancelled(true);
-                    break;
-                    default:
-                        $this->send($p, str_replace("{prefix}", $prefix, $botName . " " . $this->getMessages()->getNested("invalidcmd", "comando desconhecido, use {prefix}help")));
-                        $e->setCancelled(true);
-                    break;
+                            $this->send($p, str_replace("{prefix}", $prefix, $botName . " " . $this->getMessages()->getNested("ship.usage", "por favor, utilize {prefix}ship (nome 1) (nome 2)")));
+                            $e->setCancelled(true);
+                        break;
+                        case "broxa":
+                        case "brocha": // Fato aleatório: alguns dicionários dizem brocha e outros broxa
+                            $this->send($p, str_replace(["{player}", "{value}"], [$p->getName(), rand(1, 100)], $botName . " " . $this->getMessages()->get("broxa", "{player} está {value}% broxa")));
+                            $e->setCancelled(true);
+                        break;
+                        case "lola":
+                            $this->send($p, str_replace(["{player}", "{value}"], [$p->getName(), rand(1, 34)], $botName . " " . $this->getMessages()->get("lola", "a lola de {player} tem {value} cm")));
+                            $e->setCancelled(true);
+                        break;
+                        case "calvo":
+                            $this->send($p, str_replace(["{player}", "{value}"], [$p->getName(), rand(1, 100)], $botName . " " . $this->getMessages()->get("calvo", "{player} é {value}% calvo")));
+                            $e->setCancelled(true);
+                        break;
+                        case "help":
+                            $this->send($p, str_replace("{prefix}", $prefix, $botName . " " . $this->getMessages()->getNested("help", "Comandos:\n{prefix}ship (nome1) (nome2)\n{prefix}broxa\n{prefix}lola\n{prefix}calvo")));
+                            $e->setCancelled(true);
+                        break;
+                        case "ccme":
+                            $this->send($p, str_replace(["{botname}", "{clear}"], [$botName, str_repeat("§f\n", 40)], $this->getMessages()->getNested("ccme", "{clear}{botname} chat limpo com sucesso")));
+                            $e->setCancelled(true);
+                        break;
+                        default:
+                            $this->send($p, str_replace("{prefix}", $prefix, $botName . " " . $this->getMessages()->getNested("invalidcmd", "comando desconhecido, use {prefix}help")));
+                            
+                        break;
+                    }
+                } else {
+                    $this->send($p, $botName . " " . $this->getMessages()->getNested("disabledcmd", "esse comando foi desativado..."));
+                    $e->setCancelled(true);
                 }
             }
         }
@@ -125,5 +136,11 @@ class EventListener implements Listener
         $normalizedScore = $shipScore % 100;
         
         return $normalizedScore;
+    }
+    
+    public function isValidCommand($cmd)
+    {
+        $validCommands = ["version", "ship", "broxa", "lola", "calvo", "help", "ccme"];
+        return in_array($cmd, $validCommands);
     }
 }
