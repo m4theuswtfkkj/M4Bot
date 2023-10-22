@@ -100,6 +100,7 @@ class EventListener implements Listener
                                 $e->setCancelled(true);
                                 return;
                             }
+                            
                             $randomJoke = $jokes[array_rand($jokes)];
                             $this->send($p, str_replace("{piada}", $randomJoke, $botName . " " . $this->getMessages()->getNested("piada.success", "aqui está uma piada para você: {piada}")));
                             $e->setCancelled(true);
@@ -150,7 +151,7 @@ class EventListener implements Listener
     
     public function isValidCommand($cmd)
     {
-        $validCommands = ["version", "ship", "broxa", "lola", "calvo", "help", "ccme"];
+        $validCommands = ["version", "ship", "broxa", "lola", "calvo", "help", "ccme", "piada"];
         return in_array($cmd, $validCommands);
     }
 }
