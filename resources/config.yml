@@ -15,7 +15,6 @@ tipo: "player"
 # Nome do bot - Escolha um nome para aparecer no início de todas as mensagens do bot | Padrão: §bM4§fBot
 nome: "§bM4§fBot"
 
-
 # Comandos ativados
 # Para desativar um comando é só remover o nome dele daqui
 enabled_commands:
@@ -26,3 +25,4 @@ enabled_commands:
   - calvo
   - help
   - ccme
+  - piada
