@@ -64,7 +64,7 @@ class EventListener implements Listener
                                 $name1 = $parts[0];
                                 $name2 = $parts[1];
                             
-                                $this->send($p, str_replace(["{name1}", "{name2}", "{ship}"], [$name1, $name2, $this->ship($name1, $name2)], $botName . " " . $this->getMessages()->getNested("ship.sucess", "a chance de {name1} ficar com {name2} é {ship}")));
+                                $this->send($p, str_replace(["{name1}", "{name2}", "{ship}"], [$name1, $name2, $this->ship($name1, $name2)], $botName . " " . $this->getMessages()->getNested("ship.success", "a chance de {name1} ficar com {name2} é {ship}")));
                                 $e->setCancelled(true);
                                 return;
                             }
@@ -86,20 +86,30 @@ class EventListener implements Listener
                             $e->setCancelled(true);
                         break;
                         case "help":
-                            $this->send($p, str_replace("{prefix}", $prefix, $botName . " " . $this->getMessages()->getNested("help", "Comandos:\n{prefix}ship (nome1) (nome2)\n{prefix}broxa\n{prefix}lola\n{prefix}calvo")));
+                            $this->send($p, str_replace("{prefix}", $prefix, $botName . " " . $this->getMessages()->get("help", "Comandos:\n{prefix}ship (nome1) (nome2)\n{prefix}broxa\n{prefix}lola\n{prefix}calvo")));
                             $e->setCancelled(true);
                         break;
                         case "ccme":
-                            $this->send($p, str_replace(["{botname}", "{clear}"], [$botName, str_repeat("§f\n", 40)], $this->getMessages()->getNested("ccme", "{clear}{botname} chat limpo com sucesso")));
+                            $this->send($p, str_replace(["{botname}", "{clear}"], [$botName, str_repeat("§f\n", 40)], $this->getMessages()->get("ccme", "{clear}{botname} chat limpo com sucesso")));
                             $e->setCancelled(true);
                         break;
+                        case "piada":
+                            $jokes = $this->getMessages()->getNested("piada.piadas", []);
+                            if (empty($jokes)) {
+                                $this->send($p, $botName . " " . $this->getMessages()->getNested("piada.empty", "ah, que triste, não existem piadas disponíveis"));
+                                $e->setCancelled(true);
+                                return;
+                            }
+                            $randomJoke = $jokes[array_rand($jokes)];
+                            $this->send($p, str_replace("{piada}", $randomJoke, $botName . " " . $this->getMessages()->getNested("piada.success", "aqui está uma piada para você: {piada}")));
+                            $e->setCancelled(true);
                         default:
-                            $this->send($p, str_replace("{prefix}", $prefix, $botName . " " . $this->getMessages()->getNested("invalidcmd", "comando desconhecido, use {prefix}help")));
-                            
+                            $this->send($p, str_replace("{prefix}", $prefix, $botName . " " . $this->getMessages()->get("invalidcmd", "comando desconhecido, use {prefix}help")));
+                            $e->setCancelled(true);
                         break;
                     }
                 } else {
-                    $this->send($p, $botName . " " . $this->getMessages()->getNested("disabledcmd", "esse comando foi desativado..."));
+                    $this->send($p, $botName . " " . $this->getMessages()->get("disabledcmd", "esse comando foi desativado..."));
                     $e->setCancelled(true);
                 }
             }

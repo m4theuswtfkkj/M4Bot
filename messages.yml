@@ -34,9 +34,6 @@ piada:
  empty: "ah, que triste, não existem piadas disponíveis"
 # Aqui você pode colocar quantas piadas você quiser, elas serão escolhidas aleatóriamente pelo plugin
  piadas:
-  - "o que o pato disse para a pata? vem quá!"
-  - "qual é a fórmula da agua benta? H Deus O"
-  - "era uma vez um pintinho que se chama relam. toda vez que chovia, relam piava!"
 
 # Comando desconhecido/inválido
 invalidcmd: "comando desconhecido, use {prefix}help"
