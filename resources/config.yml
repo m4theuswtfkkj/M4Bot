@@ -6,17 +6,26 @@
 # ╚═╝░░░░░╚═╝░░░░░╚═╝░░░╚═╝░░░╚═╝░░╚═╝╚══════╝░╚═════╝░╚═════╝░
 # Arquivo de configuração do M4Bot
 
-# Prefixo - Escolha um caractere ou letra que você deseja usar como prefixo para o bot responder os comandos | Padrão: +
+# Prefixo
+# Escolha um caractere ou letra que você deseja usar como prefixo para o bot responder os comandos
+# - Padrão: +
 prefixo: "+"
 
-# Tipo - Escolha em que tipo a mensagem será enviada - "player" para o jogador que usou o comando e "server" para o servidor inteiro | Padrão: player
+# Tipo
+# Escolha de que forma a mensagem será enviada
+# Valores disponíveis:
+# "player" para o jogador que usou o comando
+# "server" para todos que estiverem online no servidor
+# - Padrão: player
 tipo: "player"
 
-# Nome do bot - Escolha um nome para aparecer no início de todas as mensagens do bot | Padrão: §bM4§fBot
+# Nome do bot
+# Escolha um nome para aparecer no início de todas as mensagens do bot
+# - Padrão: §bM4§fBot
 nome: "§bM4§fBot"
 
-# Comandos ativados
-# Para desativar um comando é só remover o nome dele daqui
+# Comandos que estão ativos
+# Para desativar um comando, é só remover o nome dele daqui.
 enabled_commands:
   - version
   - ship
