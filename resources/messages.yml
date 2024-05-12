@@ -5,8 +5,7 @@
 # ██║░╚═╝░██║╚════██║░░░██║░░░██║░░██║███████╗╚██████╔╝██████╔╝
 # ╚═╝░░░░░╚═╝░░░░░╚═╝░░░╚═╝░░░╚═╝░░╚═╝╚══════╝░╚═════╝░╚═════╝░
 # Arquivo de mensagens do M4Bot
-
-# Dica: não é necessário por o nome do bot aqui, ao adicionar ele na config.yml no início de toda mensagem ele será mostrado
+# Dica: não é necessário por o nome do bot nas mensagens, ao adicionar ele na config.yml no início de toda mensagem ele será mostrado
 
 # Ship
 ship:
@@ -20,25 +19,40 @@ broxa: "{player} está {value}% broxa" # Mensagem da procentagem de "broxa" que 
 lola: "a lola de {player} tem {value} cm" # Mensagem do tamanho da "lola" da pessoa | Variáveis: {player} - nome do jogador atual, {value} - valor aleatório do tamanho da lola da pessoa
 
 # Calvo
-calvo: "{player} é {value}% calvo" # Mensagem da procentagem de "calco" que a pessoa é | Variáveis: {player} - nome do jogador atual, {value} - valor aleatório de quanto o jogador é calvo
+# Mensagem exibindo o quão calvo o jogador que executou o comando é
+# Variáveis:
+# {player} - Nome do jogador atual
+# {value} - Valor aleatório (de 1 a 100) de quanto o jogador é calvo
+calvo: "{player} é {value}% calvo"
 
 # Ccme
-clear: "{clear}{botname} chat limpo com sucesso" # Mensagem quando o chat da pessoa é limpo | Variáveis: {botname} - nome do bot, {clear} - limpeza
+# Mensagem quando o chat de quem executou o comando é limpo
+# Variáveis:
+# {botname} - Nome do bot
+# {clear} - Limpeza
+clear: "{clear}{botname} chat limpo com sucesso"
 
 # Comando de ajuda
+# Variáveis:
+# \n - Pula uma linha
+# {prefix} - Mostra o prefixo do bot
 help: "Comandos:\n{prefix}ship (nome1) (nome2)\n{prefix}broxa\n{prefix}lola\n{prefix}calvo"
 
 # Comando de piada
+# Variáveis:
+# {piada} - Escolhe uma piada aleatória da lista de piadas
 piada:
  success: "aqui está uma piada para você: {piada}"
  empty: "ah, que triste, não existem piadas disponíveis"
-# Aqui você pode colocar quantas piadas você quiser, elas serão escolhidas aleatóriamente pelo plugin
+# Aqui você pode colocar quantas piadas você quiser (seguindo o formato de - "piada"), elas serão escolhidas aleatóriamente pelo plugin
  piadas:
   - "o que o pato disse para a pata? vem quá!"
   - "qual é a fórmula da agua benta? H Deus O"
   - "era uma vez um pintinho que se chama relam. toda vez que chovia, relam piava!"
 
 # Comando desconhecido/inválido
+# Variáveis:
+# {prefix} - Mostra o prefixo do bot
 invalidcmd: "comando desconhecido, use {prefix}help"
-# Comando desativado (config.yml para desativar ou ativar comandos)
+# Comando desativado (entre na config.yml para desativar ou ativar comandos)
 disabledcmd: "esse comando foi desativado..."
