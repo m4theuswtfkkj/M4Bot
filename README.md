@@ -8,4 +8,3 @@ Um plugin que adiciona um bot com comandos ao seu servidor (configurável) para 
 ## 🌌 - M4theuskkj (Criador)
 - [YouTube](https://youtube.com/@m4theus.wtfkkj)
 - Discord: @m4theus.wtfkkj
-- Telegram: [Clique aqui](https://t.me/m4theuswtfkkj)
