@@ -10,6 +10,8 @@ use M4Bot\EventListener;
 
 class Main extends PluginBase
 {
+    const PLUGIN_VERSION = 2:
+
     public function onEnable()
     {
         $this->getServer()->getLogger()->info(">==> M4Bot <==<");
