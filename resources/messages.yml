@@ -52,7 +52,7 @@ clear: "{clear}{botname} chat limpo com sucesso"
 # Variáveis:
 # \n - Pula uma linha
 # {prefix} - Mostra o prefixo do bot
-help: "Comandos:\n{prefix}ship (nome1) (nome2)\n{prefix}broxa\n{prefix}lola\n{prefix}calvo"
+help: "Comandos:\n{prefix}ship (nome1) (nome2)\n{prefix}broxa\n{prefix}lola\n{prefix}calvo\n{prefix}piada\n{prefix}ccme"
 
 # Comando de piada
 # Variáveis:
