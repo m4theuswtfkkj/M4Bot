@@ -57,7 +57,6 @@ class EventListener implements Listener
                     {
                         case "version":
                             $this->send($p, $botName . " §fEste servidor está usando a versão ". Main::PLUGIN_VERSION . " do plugin \"M4Bot\" :)");
-                            $e->setCancelled(true);
                         break;
                         case "ship":
                             if (count($parts) == 2) {
@@ -65,7 +64,6 @@ class EventListener implements Listener
                                 $name2 = $parts[1];
                             
                                 $this->send($p, str_replace(["{name1}", "{name2}", "{ship}"], [$name1, $name2, $this->ship($name1, $name2)], $botName . " " . $this->getMessages()->getNested("ship.success")));
-                                $e->setCancelled(true);
                                 return;
                             }
                         
@@ -75,45 +73,38 @@ class EventListener implements Listener
                         case "broxa":
                         case "brocha": // Fato aleatório: alguns dicionários dizem brocha e outros broxa
                             $this->send($p, str_replace(["{player}", "{value}"], [$p->getName(), rand(1, 100)], $botName . " " . $this->getMessages()->get("broxa")));
-                            $e->setCancelled(true);
                         break;
                         case "lola":
                             $this->send($p, str_replace(["{player}", "{value}"], [$p->getName(), rand(1, 34)], $botName . " " . $this->getMessages()->get("lola")));
-                            $e->setCancelled(true);
                         break;
                         case "calvo":
                             $this->send($p, str_replace(["{player}", "{value}"], [$p->getName(), rand(1, 100)], $botName . " " . $this->getMessages()->get("calvo")));
-                            $e->setCancelled(true);
                         break;
                         case "help":
-                            $this->send($p, str_replace("{prefix}", $prefix, $botName . " " . $this->getMessages()->get("help")));
-                            $e->setCancelled(true);
+                            $p->sendMessage(str_replace("{prefix}", $prefix, $botName . " " . $this->getMessages()->get("help")));
                         break;
                         case "ccme":
-                            $this->send($p, str_replace(["{botname}", "{clear}"], [$botName, str_repeat("§f\n", 40)], $this->getMessages()->get("ccme")));
-                            $e->setCancelled(true);
+                            $p->sendMessage(str_replace(["{botname}", "{clear}"], [$botName, str_repeat("§f\n", 40)], $this->getMessages()->get("ccme")));
                         break;
                         case "piada":
                             $jokes = $this->getMessages()->getNested("piada.piadas", []);
                             if (empty($jokes)) {
-                                $this->send($p, $botName . " " . $this->getMessages()->getNested("piada.empty"));
+                                $p->sendMessage($botName . " " . $this->getMessages()->getNested("piada.empty"));
                                 $e->setCancelled(true);
                                 return;
                             }
                             
                             $randomJoke = $jokes[array_rand($jokes)];
-                            $this->send($p, str_replace("{piada}", $randomJoke, $botName . " " . $this->getMessages()->getNested("piada.success")));
-                            $e->setCancelled(true);
+                            $p->sendMessage(str_replace("{piada}", $randomJoke, $botName . " " . $this->getMessages()->getNested("piada.success")));
                         break;
                         default:
-                            $this->send($p, str_replace("{prefix}", $prefix, $botName . " " . $this->getMessages()->get("invalidcmd")));
-                            $e->setCancelled(true);
+                            $p->sendMessage(str_replace("{prefix}", $prefix, $botName . " " . $this->getMessages()->get("invalidcmd")));
                         break;
                     }
                 } else {
                     $this->send($p, $botName . " " . $this->getMessages()->get("disabledcmd", "esse comando foi desativado..."));
-                    $e->setCancelled(true);
                 }
+                $e->setCancelled(true);
             }
         }
     }
