@@ -64,11 +64,11 @@ class EventListener implements Listener
                                 $name2 = $parts[1];
                             
                                 $this->send($p, str_replace(["{name1}", "{name2}", "{ship}"], [$name1, $name2, $this->ship($name1, $name2)], $botName . " " . $this->getMessages()->getNested("ship.success")));
+                                $e->setCancelled(true);
                                 return;
                             }
                         
                             $this->send($p, str_replace("{prefix}", $prefix, $botName . " " . $this->getMessages()->getNested("ship.usage")));
-                            $e->setCancelled(true);
                         break;
                         case "broxa":
                         case "brocha": // Fato aleatório: alguns dicionários dizem brocha e outros broxa
